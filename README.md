@@ -1,4 +1,4 @@
-# Java unit-testing Playground
+# Java unit-testing playground
 ### Evaluated mocking of static classes in Spock framework using Powermock
 
 #### Mock static methods from Java system classes
