@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.xbill.DNS.Address;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -24,7 +25,9 @@ public class DnsLookupService {
             if (!validateHostName(hostname)) {
                 throw new RuntimeException("Illegal Hostname");
             }
-            InetAddress[] allByName = InetAddress.getAllByName(hostname);
+            // InetAddress[] allByName = InetAddress.getAllByName(hostname);
+
+            InetAddress[] allByName = Address.getAllByName(hostname);
             List<AddressResult> results = Arrays.stream(allByName).map(
                     address -> new AddressResult(address.getHostAddress(), address.getHostName(), address.getCanonicalHostName())
             ).collect(Collectors.toList());
